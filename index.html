@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ConnectFour</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="EventListeners.js" type="module"></script>
+    <script src="Main.js" type="module"></script>
+    <script src="CPU.js" type="module"></script>
+    <script src="GameBoard.js" type="module"></script>
+</head>
+<body>
+    <header>
+        <h1>Connect Four</h1>
+        <div class="menuOptions">
+            <div id = "resetButton">Reset Game</div>
+            <div>
+                <label for="colorSelector" id="colorTag">Color:</label>
+                <input type="color" id="colorSelector"></input>
+            </div>
+            <div>
+                <label for='difficulties' id="difficultyTag">Difficulty:</label>
+                <select name="difficulties" id="difficultySelector">
+                    <option value='easy'>Easy</option>
+                    <option value='medium'>Medium</option>
+                    <option value='hard'>Hard</option>
+                    <option value='expert'>Expert</option>
+                </select>
+            </div>
+            
+        </div>
+    </header>
+    <div class="scoreBoard">
+        <div id="userName" class="score">User</div>
+        <div id="compName" class="score">Comp</div>
+        <span id="userScore">0</span> : <span id="compScore">0</span>
+    </div>
+    
+    <div class="lastMove">
+        <p id="computerMove">Last Move: </p>
+        <p id="computerComment"></p>
+    </div>
+    <div class="columnChoices">
+        <div class="choice" id="c0"></div>
+        <div class="choice" id="c1"></div>
+        <div class="choice" id="c2"></div>
+        <div class="choice" id="c3"></div>
+        <div class="choice" id="c4"></div>
+        <div class="choice" id="c5"></div>
+        <div class="choice" id="c6"></div>
+    </div>
+    <div id="gameBoard">
+        <div id="c0" class="column">
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+        </div>
+        <div id="c1" class="column">
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+        </div>
+        <div id="c2" class="column">
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+        </div>
+        <div id="c3" class="column">
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+        </div>
+        <div id="c4" class="column">
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+        </div>
+        <div id="c5" class="column">
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+        </div>
+        <div id="c6" class="column">
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+        </div>
+    </div>
+</body>
+</html>
