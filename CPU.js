@@ -390,58 +390,80 @@ function AllowColumnFreeze(playerID, column, doubleOrSingle){
     return false;
 }
 
+function AddTokenAndCheckForWinJustAbove(playerID, testColumn){
+    if (WinJustAbove(playerID, columnIndexToSlotArrayMap[testColumn])){
+        return true;
+    }
+    if (!AddTokenIsSuccessful("slot3", columnIndexToSlotArrayMap[testColumn])){
+        return false;
+    }
+    let win = AddTokenAndCheckForWinJustAbove(playerID, testColumn);
+    RemoveToken(testColumn);
+    if (win){
+        return true;
+    }
+    return false;
+}
+
 function AddTokensUntilWinJustAbove(playerID, column, initialTest){
     for (let testColumn = 0; testColumn <= 6; testColumn++){
         if (columnIndexToSlotArrayMap[testColumn] == column || initialTest[testColumn] == 1){
             continue;
         }
-        if (WinJustAbove(playerID, columnIndexToSlotArrayMap[testColumn])){
+        if (AddTokenAndCheckForWinJustAbove(playerID, testColumn)){
             return testColumn;
         }
-        if (!AddTokenIsSuccessful("slot3", columnIndexToSlotArrayMap[testColumn])){
-            continue;
-        }
-        if (WinJustAbove(playerID, columnIndexToSlotArrayMap[testColumn])){
-            RemoveToken(columnIndexToSlotArrayMap[testColumn]);
-            return testColumn;
-        }
-        if (!AddTokenIsSuccessful("slot3", columnIndexToSlotArrayMap[testColumn])){
-            RemoveToken(columnIndexToSlotArrayMap[testColumn]);
-            continue;
-        }
-        if (WinJustAbove(playerID, columnIndexToSlotArrayMap[testColumn])){
-            RemoveToken(columnIndexToSlotArrayMap[testColumn]);
-            RemoveToken(columnIndexToSlotArrayMap[testColumn]);
-            return testColumn;
-        }
-        if (!AddTokenIsSuccessful("slot3", columnIndexToSlotArrayMap[testColumn])){
-            RemoveToken(columnIndexToSlotArrayMap[testColumn]);
-            RemoveToken(columnIndexToSlotArrayMap[testColumn]);
-            continue;
-        }
-        if (WinJustAbove(playerID, columnIndexToSlotArrayMap[testColumn])){
-            RemoveToken(columnIndexToSlotArrayMap[testColumn]);
-            RemoveToken(columnIndexToSlotArrayMap[testColumn]);
-            RemoveToken(columnIndexToSlotArrayMap[testColumn]);
-            return testColumn;
-        }
-        if (!AddTokenIsSuccessful("slot3", columnIndexToSlotArrayMap[testColumn])){
-            RemoveToken(columnIndexToSlotArrayMap[testColumn]);
-            RemoveToken(columnIndexToSlotArrayMap[testColumn]);
-            RemoveToken(columnIndexToSlotArrayMap[testColumn]);
-            continue;
-        }
-        if (WinJustAbove(playerID, columnIndexToSlotArrayMap[testColumn])){
-            RemoveToken(columnIndexToSlotArrayMap[testColumn]);
-            RemoveToken(columnIndexToSlotArrayMap[testColumn]);
-            RemoveToken(columnIndexToSlotArrayMap[testColumn]);
-            RemoveToken(columnIndexToSlotArrayMap[testColumn]);
-            return testColumn;
-        }
-        RemoveToken(columnIndexToSlotArrayMap[testColumn]);
-        RemoveToken(columnIndexToSlotArrayMap[testColumn]);
-        RemoveToken(columnIndexToSlotArrayMap[testColumn]);
-        RemoveToken(columnIndexToSlotArrayMap[testColumn]);
+        return -1;
     }
-    return -1;
 }
+        
+        
+//         if (WinJustAbove(playerID, columnIndexToSlotArrayMap[testColumn])){
+//             return testColumn;
+//         }
+//         if (!AddTokenIsSuccessful("slot3", columnIndexToSlotArrayMap[testColumn])){
+//             continue;
+//         }
+//         if (WinJustAbove(playerID, columnIndexToSlotArrayMap[testColumn])){
+//             RemoveToken(columnIndexToSlotArrayMap[testColumn]);
+//             return testColumn;
+//         }
+//         if (!AddTokenIsSuccessful("slot3", columnIndexToSlotArrayMap[testColumn])){
+//             RemoveToken(columnIndexToSlotArrayMap[testColumn]);
+//             continue;
+//         }
+//         if (WinJustAbove(playerID, columnIndexToSlotArrayMap[testColumn])){
+//             RemoveToken(columnIndexToSlotArrayMap[testColumn]);
+//             RemoveToken(columnIndexToSlotArrayMap[testColumn]);
+//             return testColumn;
+//         }
+//         if (!AddTokenIsSuccessful("slot3", columnIndexToSlotArrayMap[testColumn])){
+//             RemoveToken(columnIndexToSlotArrayMap[testColumn]);
+//             RemoveToken(columnIndexToSlotArrayMap[testColumn]);
+//             continue;
+//         }
+//         if (WinJustAbove(playerID, columnIndexToSlotArrayMap[testColumn])){
+//             RemoveToken(columnIndexToSlotArrayMap[testColumn]);
+//             RemoveToken(columnIndexToSlotArrayMap[testColumn]);
+//             RemoveToken(columnIndexToSlotArrayMap[testColumn]);
+//             return testColumn;
+//         }
+//         if (!AddTokenIsSuccessful("slot3", columnIndexToSlotArrayMap[testColumn])){
+//             RemoveToken(columnIndexToSlotArrayMap[testColumn]);
+//             RemoveToken(columnIndexToSlotArrayMap[testColumn]);
+//             RemoveToken(columnIndexToSlotArrayMap[testColumn]);
+//             continue;
+//         }
+//         if (WinJustAbove(playerID, columnIndexToSlotArrayMap[testColumn])){
+//             RemoveToken(columnIndexToSlotArrayMap[testColumn]);
+//             RemoveToken(columnIndexToSlotArrayMap[testColumn]);
+//             RemoveToken(columnIndexToSlotArrayMap[testColumn]);
+//             RemoveToken(columnIndexToSlotArrayMap[testColumn]);
+//             return testColumn;
+//         }
+//         RemoveToken(columnIndexToSlotArrayMap[testColumn]);
+//         RemoveToken(columnIndexToSlotArrayMap[testColumn]);
+//         RemoveToken(columnIndexToSlotArrayMap[testColumn]);
+//         RemoveToken(columnIndexToSlotArrayMap[testColumn]);
+//     }
+//     return -1;
