@@ -398,7 +398,7 @@ function AddTokenAndCheckForWinJustAbove(playerID, testColumn){
         return false;
     }
     let win = AddTokenAndCheckForWinJustAbove(playerID, testColumn);
-    RemoveToken(testColumn);
+    RemoveToken(columnIndexToSlotArrayMap[testColumn]);
     if (win){
         return true;
     }
@@ -413,8 +413,8 @@ function AddTokensUntilWinJustAbove(playerID, column, initialTest){
         if (AddTokenAndCheckForWinJustAbove(playerID, testColumn)){
             return testColumn;
         }
-        return -1;
     }
+    return -1;
 }
         
         
