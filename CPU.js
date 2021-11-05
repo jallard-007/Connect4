@@ -148,6 +148,9 @@ function AssignRandomValues(columnOptions){
     for (let column = 0; column <= 6; column++){
         if (columnOptions[column] == 0){
             columnOptions[column] = Math.floor((Math.random()*10));
+            if (column < 5 && column > 1){
+                columnOptions[column] *= 3;
+            }
         }
     }
     return columnOptions;
