@@ -133,7 +133,7 @@ export function CPUMain(difficulty){
     }
     let bestColumn = FindBestColumn(columnOptions);
     if (columnOptions[bestColumn] == 0){
-        columnOptions = AssignRandomValues(columnOptions);
+        columnOptions = AssignRandomValues(columnOptions, difficulty);
         bestColumn = FindBestColumn(columnOptions);
     }
     console.log("slot2: " + columnOptions);
@@ -144,11 +144,11 @@ export function CPUMain(difficulty){
     }
 }
 
-function AssignRandomValues(columnOptions){
+function AssignRandomValues(columnOptions, difficulty){
     for (let column = 0; column <= 6; column++){
         if (columnOptions[column] == 0){
             columnOptions[column] = Math.floor((Math.random()*10));
-            if (column < 5 && column > 1){
+            if (difficulty > 2 && column < 5 && column > 1){
                 columnOptions[column] *= 3;
             }
         }
