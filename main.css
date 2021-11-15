@@ -1,154 +1,147 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    user-select: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  font-family: Monospace;
 }
 
-:root{
-    --playerColor: yellow;
-    --compColor: red;
+#title {
+  font-size: min(4vw, 30px);
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
-body{
-    background-color: rgb(0, 0, 0);
-    color: rgb(105, 105, 105);
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+:root {
+  --playerColor: yellow;
+  --compColor: red;
 }
 
-header{
-    background-color: rgb(207, 207, 207);
-    padding: 5px;
+body {
+  background-color: rgb(0, 0, 0);
+  color: rgb(105, 105, 105);
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.menuOptions{
-    position: absolute;
-    display: inline-flex;
-    top: 7px;
-    right: 10px;
+header {
+  background-color: rgb(207, 207, 207);
+  padding: 5px;
 }
 
-#resetButton{
-    margin-right: 10px;
-}
-#colorSelector{
-    margin-right: 10px;
-    margin-top: 4px;
-}
-#difficultySelector{
-    margin-top: 7px;
+.sizing {
+  font-size: min(2vw, 16px);
 }
 
-.scoreBoard{
-    margin: auto;
-    width: 140px;
-    color:rgb(255, 255, 255);
-    font-size: 35px;
-    padding: 10px;
-    border-radius: 5px;
-    position: relative;
+#resetButton {
+  font-size: min(2vw, 16px);
+  margin-right: 10px;
+}
+#colorSelector {
+  font-size: min(2vw, 16px);
+  margin-right: 10px;
+  margin-top: 4px;
+}
+#difficultySelector {
+  margin-top: 7px;
 }
 
-.score{
-    position: absolute;
-    top: 20px;
-    padding: 2px;
-    color:rgb(255, 255, 255);
-    background-color: rgb(61, 61, 61);
-    font-size: 14px;
+.scoreBoard {
+  margin: auto;
+  width: 140px;
+  color: rgb(255, 255, 255);
+  font-size: 35px;
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
 }
 
-#userName{
-    left: -30px;
-    color: var(--playerColor);
+.score {
+  position: absolute;
+  top: 20px;
+  padding: 2px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(61, 61, 61);
 }
 
-#userScore{
-    color: var(--playerColor);
+#userName {
+  left: max(-80px, -10vw);
+  color: var(--playerColor);
 }
 
-#compName{
-    right: -30px;
-    color: var(--compColor);
+#userScore {
+  font-size: min(6vw, 36px);
+  color: var(--playerColor);
 }
 
-#compScore{
-    color: var(--compColor);
+#compName {
+  right: max(-30px, -10vw);
+  color: var(--compColor);
 }
 
-#resetButton{
-    width: fit-content;
-    padding: 5px;
-    color: white;
-    background-color: rgb(13, 13, 117);
-    border: 2px solid white;
-    border-radius: 5px;
-    transition: all 0.2s ease;
+#compScore {
+  font-size: min(6vw, 36px);
+  color: var(--compColor);
 }
 
-#resetButton:hover{
-    cursor: pointer;
-    background: rgb(49, 49, 49);
-    font-size: 16px;
+#resetButton {
+  width: fit-content;
+  color: white;
+  border: 2px solid white;
+  border-radius: 5px;
+  transition: all 0.2s ease;
 }
 
-.lastMove{
-    color: rgb(255, 255, 255);
-    margin: 10px;
+#resetButton:hover {
+  cursor: pointer;
+  font-size: 16px;
 }
 
-.columnChoices{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    color: white;
+.lastMove {
+  color: rgb(255, 255, 255);
+  margin: 10px;
 }
 
-.choice{
-    width: 84px;
-    height: 84px;
-    margin: 2px;
-    display: inline-block;
-    border: 2px dashed rgba(255, 255, 255, 0.527);
-    border-radius: 50%;
-    transition: all 0.3s ease;
+.column:hover {
+  cursor: pointer;
 }
 
-.choice:hover{
-    cursor: pointer;
-    background: var(--playerColor);
-    color: tur;
+#gameBoard {
+  border-radius: 10px;
+  margin: auto;
+  width: fit-content;
+  background-color: rgb(65, 65, 189);
+  display: flex;
+  flex-direction: row;
 }
 
-#gameBoard{
-    border-radius: 10px;
-    margin: auto;
-    width: fit-content;
-    background-color: rgb(65, 65, 189);
-    display: flex;
-    flex-direction: row;
+.slot {
+  width: 8vw;
+  max-width: 75px;
+  height: 8vw;
+  max-height: 75px;
+  margin: 4px;
+  background-color: rgba(8, 9, 53, 0.925);
+  border: 1px solid rgb(13, 13, 116);
+  border-radius: 50%;
 }
 
-.slot{
-    width: 84px;
-    height: 84px;
-    margin: 4px;
-    background-color: rgba(8, 9, 53, 0.925);
-    border: 1px solid rgb(13, 13, 116);
-    border-radius: 50%;
+.slot1 {
+  background-color: var(--playerColor);
+  transition: 0.3s;
 }
 
-.slot1{
-    background-color: var(--playerColor);
-    transition: 0.3s;
+.slot2 {
+  background-color: var(--compColor);
+  transition: 0.3s;
 }
 
-.slot2{
-    background-color: var(--compColor);
-    transition: 0.3s;
+.slot4 {
+  background-color: var(--playerColor);
+  opacity: 0.4;
+  transition: 0.3;
 }
 
-.slotWin{
-    border: 8px solid rgb(0, 0, 0);
+.slotWin {
+  border: 8px solid rgb(0, 0, 0);
 }
-
