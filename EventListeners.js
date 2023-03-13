@@ -2,7 +2,7 @@ import { GameLoop } from './Main.js';
 import {
   ClearBoard,
   HoverOverColumn,
-  RemoveHoverOverColumn,
+  RemoveHoverOverColumn
 } from './GameBoard.js';
 import {
   choiceColumn0,
@@ -15,7 +15,7 @@ import {
   resetButton,
   colorSelector,
   cssRoot,
-  difficultySelector,
+  difficultySelector
 } from './pageElements.js';
 
 export function ResetButtonEventListener() {
@@ -25,48 +25,50 @@ export function ResetButtonEventListener() {
 }
 
 export function AddColumnChoiceEventListener() {
-  choiceColumn0.addEventListener('mouseover', () => {
-    HoverOverColumn(0);
-  });
-  choiceColumn1.addEventListener('mouseover', () => {
-    HoverOverColumn(1);
-  });
-  choiceColumn2.addEventListener('mouseover', () => {
-    HoverOverColumn(2);
-  });
-  choiceColumn3.addEventListener('mouseover', () => {
-    HoverOverColumn(3);
-  });
-  choiceColumn4.addEventListener('mouseover', () => {
-    HoverOverColumn(4);
-  });
-  choiceColumn5.addEventListener('mouseover', () => {
-    HoverOverColumn(5);
-  });
-  choiceColumn6.addEventListener('mouseover', () => {
-    HoverOverColumn(6);
-  });
-  choiceColumn0.addEventListener('mouseleave', () => {
-    RemoveHoverOverColumn(0);
-  });
-  choiceColumn1.addEventListener('mouseleave', () => {
-    RemoveHoverOverColumn(1);
-  });
-  choiceColumn2.addEventListener('mouseleave', () => {
-    RemoveHoverOverColumn(2);
-  });
-  choiceColumn3.addEventListener('mouseleave', () => {
-    RemoveHoverOverColumn(3);
-  });
-  choiceColumn4.addEventListener('mouseleave', () => {
-    RemoveHoverOverColumn(4);
-  });
-  choiceColumn5.addEventListener('mouseleave', () => {
-    RemoveHoverOverColumn(5);
-  });
-  choiceColumn6.addEventListener('mouseleave', () => {
-    RemoveHoverOverColumn(6);
-  });
+  if (!/Mobi|Android/i.test(navigator.userAgent)) {
+    choiceColumn0.addEventListener('mouseover', () => {
+      HoverOverColumn(0);
+    });
+    choiceColumn1.addEventListener('mouseover', () => {
+      HoverOverColumn(1);
+    });
+    choiceColumn2.addEventListener('mouseover', () => {
+      HoverOverColumn(2);
+    });
+    choiceColumn3.addEventListener('mouseover', () => {
+      HoverOverColumn(3);
+    });
+    choiceColumn4.addEventListener('mouseover', () => {
+      HoverOverColumn(4);
+    });
+    choiceColumn5.addEventListener('mouseover', () => {
+      HoverOverColumn(5);
+    });
+    choiceColumn6.addEventListener('mouseover', () => {
+      HoverOverColumn(6);
+    });
+    choiceColumn0.addEventListener('mouseleave', () => {
+      RemoveHoverOverColumn(0);
+    });
+    choiceColumn1.addEventListener('mouseleave', () => {
+      RemoveHoverOverColumn(1);
+    });
+    choiceColumn2.addEventListener('mouseleave', () => {
+      RemoveHoverOverColumn(2);
+    });
+    choiceColumn3.addEventListener('mouseleave', () => {
+      RemoveHoverOverColumn(3);
+    });
+    choiceColumn4.addEventListener('mouseleave', () => {
+      RemoveHoverOverColumn(4);
+    });
+    choiceColumn5.addEventListener('mouseleave', () => {
+      RemoveHoverOverColumn(5);
+    });
+    choiceColumn6.addEventListener('mouseleave', () => {
+      RemoveHoverOverColumn(6);
+    });
+  }
   choiceColumn0.addEventListener('click', () => {
     ClickHandle(0);
   });
@@ -91,9 +93,13 @@ export function AddColumnChoiceEventListener() {
 }
 
 function ClickHandle(column) {
-  RemoveHoverOverColumn(column);
+  if (!/Mobi|Android/i.test(navigator.userAgent)) {
+    RemoveHoverOverColumn(column);
+  }
   GameLoop(column);
-  HoverOverColumn(column);
+  if (!/Mobi|Android/i.test(navigator.userAgent)) {
+    HoverOverColumn(column);
+  }
 }
 
 export function AddChangeColorEventListener() {
