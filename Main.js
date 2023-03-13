@@ -1,12 +1,17 @@
 import { CPUMain } from './CPU.js';
 import { IsThereAWin, AddTokenIsSuccessful, IsSlotEmpty } from './GameBoard.js';
-import { lastMove, columnIndexToSlotArrayMap, userTotalScore, compTotalScore } from './pageElements.js';
+import {
+  lastMove,
+  columnIndexToSlotArrayMap,
+  userTotalScore,
+  compTotalScore,
+} from './pageElements.js';
 import {
   AddColumnChoiceEventListener,
   ResetButtonEventListener,
   AddChangeColorEventListener,
   AddDifficultyEventListener,
-  difficulty
+  difficulty,
 } from './EventListeners.js';
 
 function Main() {
@@ -27,8 +32,12 @@ export function GameLoop(columnNum) {
   if (IsBoardFull() || IsThereAWin('slot1') || IsThereAWin('slot2')) {
     return;
   }
-  if (AddTokenIsSuccessful('slot1', columnIndexToSlotArrayMap[columnNum]) && IsThereAWin('slot1', 'win')) {
-    WhenThereIsAWin('slot1');
+  if (AddTokenIsSuccessful('slot1', columnIndexToSlotArrayMap[columnNum])) {
+    if (IsThereAWin('slot1', 'win')) {
+      WhenThereIsAWin('slot1');
+      return;
+    }
+  } else {
     return;
   }
   let cpuColumn = CPUMain(difficulty);
