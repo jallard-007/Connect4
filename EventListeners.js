@@ -1,5 +1,9 @@
 import { GameLoop } from './Main.js';
-import { ClearBoard, HoverOverColumn, RemoveHoverOverColumn } from './GameBoard.js';
+import {
+  ClearBoard,
+  HoverOverColumn,
+  RemoveHoverOverColumn,
+} from './GameBoard.js';
 import {
   choiceColumn0,
   choiceColumn1,
@@ -11,7 +15,7 @@ import {
   resetButton,
   colorSelector,
   cssRoot,
-  difficultySelector
+  difficultySelector,
 } from './pageElements.js';
 
 export function ResetButtonEventListener() {
@@ -98,7 +102,7 @@ export function AddChangeColorEventListener() {
   });
 }
 
-export let difficulty = 0;
+export let difficulty = 3; // default to expert difficulty
 export function AddDifficultyEventListener() {
   difficultySelector.addEventListener('change', () => {
     console.log(difficultySelector.value);
